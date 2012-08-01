@@ -486,11 +486,9 @@ namespace Dean.Edwards
 		public void ProcessRequest(HttpContext context)
 		{
 			// try and read settings from config file
-			if (System.Configuration.ConfigurationSettings.GetConfig("ecmascriptpacker") != null)
+			if (System.Configuration.ConfigurationManager.GetSection("ecmascriptpacker") != null)
 			{
-				NameValueCollection cfg = 
-					(NameValueCollection)
-					System.Configuration.ConfigurationSettings.GetConfig("ecmascriptpacker");
+				NameValueCollection cfg = (NameValueCollection)System.Configuration.ConfigurationManager.GetSection("ecmascriptpacker");
 				if (cfg["Encoding"] != null)
 				{
 					switch(cfg["Encoding"].ToLower())
@@ -591,11 +589,9 @@ namespace Dean.Edwards
 		{
 			get 
 			{ 
-				if (System.Configuration.ConfigurationSettings.GetConfig("ecmascriptpacker") != null)
+				if (System.Configuration.ConfigurationManager.GetSection("ecmascriptpacker") != null)
 				{
-					NameValueCollection cfg = 
-						(NameValueCollection)
-						System.Configuration.ConfigurationSettings.GetConfig("ecmascriptpacker");
+					NameValueCollection cfg = (NameValueCollection)System.Configuration.ConfigurationManager.GetSection("ecmascriptpacker");
 					if (cfg["IsReusable"] != null)
 						if (cfg["IsReusable"].ToLower() == "true")
 							return true;

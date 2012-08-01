@@ -72,6 +72,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
@@ -96,13 +97,14 @@
     <Compile Include="Packer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Packer.Designer.cs">
+      <DependentUpon>Packer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ParseMaster.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Program.cs" />
     <Content Include="App.ico" />
-    <EmbeddedResource Include="Packer.resx">
-      <DependentUpon>Packer.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
