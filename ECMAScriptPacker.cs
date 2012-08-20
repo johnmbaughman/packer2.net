@@ -287,7 +287,7 @@ namespace Dean.Edwards {
 			int i = 0;
 			do {
 				int digit = (code / (int)Math.Pow(36, i)) % 36;
-				encoded = lookup36[digit] + encoded;
+				encoded = string.Concat(lookup36[digit], encoded);
 				code -= digit * (int)Math.Pow(36, i++);
 			} while (code > 0);
 			return encoded;
@@ -300,7 +300,7 @@ namespace Dean.Edwards {
 			int i = 0;
 			do {
 				int digit = (code / (int)Math.Pow(62, i)) % 62;
-				encoded = lookup62[digit] + encoded;
+				encoded = string.Concat(lookup62[digit], encoded);
 				code -= digit * (int)Math.Pow(62, i++);
 			} while (code > 0);
 			return encoded;
@@ -313,7 +313,7 @@ namespace Dean.Edwards {
 			int i = 0;
 			do {
 				int digit = (code / (int)Math.Pow(95, i)) % 95;
-				encoded = lookup95[digit] + encoded;
+				encoded = string.Concat(lookup95[digit], encoded);
 				code -= digit * (int)Math.Pow(95, i++);
 			} while (code > 0);
 			return encoded;
@@ -493,13 +493,13 @@ namespace Dean.Edwards {
 						break;
 				}
 			}
-			if (context.Request.QueryString["FastDecode"] != null) {
+			if (!string.IsNullOrEmpty(context.Request.QueryString["FastDecode"])) {
 				FastDecode = context.Request.QueryString["FastDecode"].ToLower().Equals("true");
 			}
-			if (context.Request.QueryString["SpecialChars"] != null) {
+			if (!string.IsNullOrEmpty(context.Request.QueryString["SpecialChars"])) {
 				SpecialChars = context.Request.QueryString["SpecialChars"].ToLower().Equals("true");
 			}
-			if (context.Request.QueryString["Enabled"] != null) {
+			if (!string.IsNullOrEmpty(context.Request.QueryString["Enabled"])) {
 				Enabled = context.Request.QueryString["Enabled"].ToLower().Equals("true");
 			}
 			//handle the request
